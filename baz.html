@@ -1,0 +1,303 @@
+<html>
+
+  <head>
+
+    <title>M4TH</title>
+
+    <link rel='stylesheet' href='https://necolas.github.io/normalize.css/latest/normalize.css'>
+
+    <style>
+      div {
+        padding: 1em;
+      }
+
+      canvas {
+          /* cursor: crosshair; */
+      }
+    </style>
+
+  </head>
+
+  <body>
+
+    <canvas id='foo' width=400 height=400 style='background: pink'>
+    </canvas>
+
+
+    <div>
+      `p_(0x) = l_0 cos theta_0`
+      <br>
+      `p_(0y) = l_0 sin theta_0`
+      <br>
+      `p_(1x) = p_(0x) + l_1 cos(theta_0 + theta_1)`
+      <br>
+      `p_(1y) = p_(0y) + l_1 sin(theta_0 + theta_1)`
+      <br>
+      `theta_0 + theta_1 + theta_2 + (pi/2 - theta_0) + pi/2 = 2pi :. theta_2 = pi - theta_1`
+      <br>
+      `|p|^2 = l_0^2 + l_1^2 - 2 l_0 l_1 cos theta_2` 
+    </div>
+
+    <hr>
+
+    <div>
+      `|p|^2 = l_0^2 + l_1^2 - 2 l_0 l_1 cos theta_2`
+      <br>
+      ` = l_0^2 + l_1^2 - 2 l_0 l_1 cos (pi - theta_1)` 
+      <br>
+      ` = l_0^2 + l_1^2 + 2 l_0 l_1 cos theta_1` because `cos(pi - x) = cos pi cos x + sin pi sin x = -cosx`
+      <br>
+      `(|p|^2 - l_0^2 - l_1^2) / (2 l_0 l_1) = cos theta_1`
+      <br>
+      `cos^-1 ((|p|^2 - l_0^2 - l_1^2) / (2 l_0 l_1)) = theta_1` for two quadrants (should be +/-?)
+    </div>
+
+    <hr>
+
+    <div>
+      `p_(1y) = p_(0y) + l_1 sin(theta_0 + theta_1)`
+      <br>
+      ` = l_0 sin theta_0 + l_1 sin(theta_0 + theta_1)`
+      <br>
+      ` = l_0 sin theta_0 + l_1 (sin theta_0 cos theta_1 + cos theta_0 sin theta_1)` because `sin(x + y) = sinx cosy + cosx siny`
+      <br>
+      ` = l_0 sin theta_0 + l_1 sin theta_0 cos theta_1 + l_1 cos theta_0 sin theta_1`
+      <br>
+      ` = sin theta_0 (l_0 + l_1 cos theta_1) + l_1 cos theta_0 sin theta_1`
+      <br>
+      `p_(1y) - l_1 cos theta_0 sin theta_1 = sin theta_0 (l_0 + l_1 cos theta_1)`
+      <br>
+      `(p_(1y) - l_1 cos theta_0 sin theta_1) / (l_0 + l_1 cos theta_1) = sin theta_0`
+    </div>
+
+    <hr>
+
+    <div>
+      `p_(1x) = p_(0x) + l_1 cos(theta_0 + theta_1)`
+      <br>
+      ` = l_0 cos theta_0 + l_1 cos(theta_0 + theta_1)`
+      <br>
+      ` = l_0 cos theta_0 + l_1 (cos theta_0 cos theta_1 - sin theta_0 sin theta_1)` because `cos(x + y) = cos x cos y - sin x sin y`
+      <br>
+      ` = l_0 cos theta_0 + l_1 cos theta_0 cos theta_1 - l_1 sin theta_0 sin theta_1`
+      <br>
+      ` = cos theta_0 (l_0 + l_1 cos theta_1) - l_1 sin theta_1 ((p_(1y) - l_1 cos theta_0 sin theta_1) / (l_0 + l_1 cos theta_1))`
+      <br>
+      ` = cos theta_0 (l_0 + l_1 cos theta_1) - (l_1 p_(1y) sin theta_1 - l_1^2 cos theta_0 sin^2 theta_1) / (l_0 + l_1 cos theta_1)`
+      <br>
+      ` = (cos theta_0 (l_0 + l_1 cos theta_1)^2 - l_1 p_(1y) sin theta_1 + l_1^2 cos theta_0 sin^2 theta_1) / (l_0 + l_1 cos theta_1)`
+      <br>
+      `p_(1x) (l_0 + l_1 cos theta_1) = cos theta_0 (l_0 + l_1 cos theta_1)^2 - l_1 p_(1y) sin theta_1 + l_1^2 cos theta_0 sin^2 theta_1`
+      <br>
+      `p_(1x) (l_0 + l_1 cos theta_1) + l_1 p_(1y) sin theta_1 = cos theta_0 ((l_0 + l_1 cos theta_1)^2 + l_1^2 sin^2 theta_1)`
+      <br>
+      ` = cos theta_0 (l_0^2 + 2 l_0 l_1 cos theta_1 + l_1^2 cos^2 theta_1 + l_1^2 sin^2 theta_1)`
+      <br>
+      ` = cos theta_0 (l_0^2 + 2 l_0 l_1 cos theta_1 + l_1^2)` because `sin^2 x + cos^2 x = 1`
+      <br>
+      ` = cos theta_0 (l_0^2 + 2 l_0 l_1 ((|p|^2 - l_0^2 - l_1^2) / (2 l_0 l_1)) + l_1^2)`
+      <br>
+      ` = cos theta_0 |p|^2`
+      <br>
+      `(p_(1x) (l_0 + l_1 cos theta_1) + l_1 p_(1y) sin theta_1) / |p|^2= cos theta_0`
+      <br>
+      `(l_0 p_(1x) + l_1 p_(1x) cos theta_1 + l_1 p_(1y) sin theta_1) / |p|^2 =`
+      <br>
+      `(l_0 p_(1x) + l_1 (p_(1x) cos theta_1 + p_(1y) sin theta_1)) / |p|^2 = `
+      <br>
+      `cos^-1 ((l_0 p_(1x) + l_1 (p_(1x) cos theta_1 + p_(1y) sin theta_1)) / |p|^2) = theta_0`
+    </div>
+
+
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_HTMLorMML'></script>
+
+    <script src='https://d3js.org/d3.v3.min.js' charset='utf-8'></script>
+
+    <script>
+      function relMouseCoords(event){
+        //   var totalOffsetX = 0;
+        //   var totalOffsetY = 0;
+        //   var canvasX = 0;
+        //   var canvasY = 0;
+        //   var currentElement = this;
+
+        //   do{
+        //       totalOffsetX += currentElement.offsetLeft - currentElement.scrollLeft;
+        //       totalOffsetY += currentElement.offsetTop - currentElement.scrollTop;
+        //   }
+        //   while(currentElement = currentElement.offsetParent)
+
+        //   canvasX = event.pageX - totalOffsetX;
+        //   canvasY = event.pageY - totalOffsetY;
+
+        //   return {x:canvasX, y:canvasY}
+
+    var rect = canvas.getBoundingClientRect();
+    return {
+        x: (event.clientX - rect.left) / (rect.right - rect.left) * canvas.width,
+        y: (event.clientY - rect.top) / (rect.bottom - rect.top) * canvas.height
+    };
+
+      }
+      HTMLCanvasElement.prototype.relMouseCoords = relMouseCoords;
+
+      var canvas = document.getElementById('foo');
+      canvas.addEventListener("mousemove", function(e) {
+
+function isNumber(value) { return typeof value === 'number' && isFinite(value); };
+
+var origin = {x: 200, y: 200};
+var l0 = 100;
+var l1 = 100;
+        var click = canvas.relMouseCoords(e);
+
+var px = click.x - origin.x; // deez can't be negative?
+var py = click.y - origin.y;
+var sq = function(x) { return Math.pow(x, 2); }
+var p = Math.sqrt(sq(px) + sq(py));
+console.log('px=' + px + ' py=' + py + ' p=' + p);
+var theta1 = (px > 0 && py < 0 || px < 0 && py > 0 ? 1 : -1) * Math.acos((sq(p) - sq(l0) - sq(l1)) / (2 * l0 * l1));
+console.log('theta1=' + theta1);
+if (!isNumber(theta1) || (l0 + l1) < p) return;
+var theta0 = (py < 0 ? -1 : 1) * Math.acos((l0 * px + l1 * (px * Math.cos(theta1) + py * Math.sin(theta1))) / sq(p));
+//                     cos^-1 ((l_0 p_(1x) + l_1 (p_(1x) cos theta_1 + p_(1y) sin theta_1)) / |p|^2)
+if (!isNumber(theta0)) return;
+console.log('theta0=' + theta0);
+
+
+        var ctx=canvas.getContext("2d");
+        ctx.clearRect(0, 0, 400, 400);
+        ctx.beginPath();
+        ctx.moveTo(origin.x, 0);
+        ctx.lineTo(origin.x, 400);
+        ctx.strokeStyle = '#000000';
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(0, origin.y);
+        ctx.lineTo(400, origin.y);
+        ctx.strokeStyle = '#000000';
+        ctx.stroke();
+
+         ctx.beginPath();
+         ctx.arc(origin.x, origin.y, l0 + l1, 0, 2 * Math.PI);
+      ctx.strokeStyle = '#0000ff';
+ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(origin.x,origin.y);
+        var p0x = origin.x + l0 * Math.cos(theta0);
+        var p0y = origin.y + l0 * Math.sin(theta0);
+        console.log('p0x=' + p0x + ' p0y=' + p0y);
+        ctx.lineTo(p0x, p0y);
+     ctx.strokeStyle = '#ff0000';
+      ctx.stroke();
+
+         ctx.beginPath();
+        ctx.moveTo(p0x, p0y);
+         //ctx.lineTo(origin.x + px, origin.y + py);
+         var p1x =p0x + l1 * Math.cos(theta0 + theta1);
+         var p1y =p0y + l1 * Math.sin(theta0 + theta1);
+         ctx.lineTo(p1x, p1y);
+      ctx.strokeStyle = '#00ff00';
+       ctx.stroke();
+
+
+
+      });
+
+    </script>
+
+
+    <script>
+
+    var margin = {top: 8, right: 8, bottom: 8, left: 8},
+    width = 512 - margin.left - margin.right,
+    height = 512 - margin.top - margin.bottom;
+
+var xScale = d3.scale.linear()
+    .domain([0, 100])
+    .range([0, width]);
+
+var yScale = d3.scale.linear()
+    .domain([0, 100])
+    .range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(xScale)
+    .tickSize(0)
+    .tickFormat(function () { return ''; });
+
+var yAxis = d3.svg.axis()
+    .scale(yScale)
+    .orient('left')
+    .tickSize(0)
+    .tickFormat(function () { return ''; });
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+var axisStyle = { 'stroke': 'black', 'fill': 'none', 'stroke-width': '1px'};
+svg.append('g')
+    .attr("class", "x axis")
+   .attr("transform", "translate(0," + height + ")")
+    .style(axisStyle)
+    .call(xAxis);
+
+svg.append('g')
+    .attr("class", "y axis")
+    .style(axisStyle)
+    .call(yAxis);
+
+var dataX = function(d) { return xScale(d[0]); };
+var dataY = function(d) { return yScale(d[1]); };
+
+var line = d3.svg.line()
+                 .x(dataX)
+                 .y(dataY);
+
+svg.append('path')
+   .attr('d', line([ [0, 0], [50, 30], [50, 0] ]))
+    .style('fill', 'none')
+    .style('stroke', 'green');
+
+svg.append('path')
+   .attr('d', line([ [0, 0], [90, 54] ]))
+    .style('fill', 'none')
+    .style('stroke', 'green');
+
+svg.append('path')
+   .attr('d', line([ [50, 30], [90, 80], [90, 30], [50, 30] ]))
+    .style('fill', 'none')
+    .style('stroke', 'red');
+
+svg.append('path')
+   .attr('id', 'l1')
+   .attr('d', line([ [50, 30], [90, 80] ]))
+    .style('fill', 'none')
+    .style('stroke', 'pink');
+
+
+svg.append("text")
+  .append("textPath")
+    .attr("xlink:href", "#l1")
+    .attr("text-anchor","middle") 
+    .text("l1");
+
+
+svg.append('path')
+   .attr('d', line([ [0, 0], [90, 80] ]))
+    .style('fill', 'none')
+    .style('stroke', 'blue');
+
+
+    </script>
+
+    © 2018 Stephen Niedzielski. GPLv3.
+
+  </body>
+
+</html>
